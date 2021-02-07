@@ -22,4 +22,27 @@ class Zoo
     def self.all
         @@all
     end 
+
+    # - `Zoo#all_animals` should return all the animals that a specific instance of a zoo has.
+    def all_animals
+        Animal.all.select do |animal|
+            animal.zoo == self
+        end 
+    end 
+
+    # - `Zoo#all_animal_species` should return an array of the unique animal species that a specific instance of a zoo has.
+    def all_animal_species 
+        #binding.pry 
+        all_animals.map {|species| species.species}.uniq
+    end 
+
+    def self.find_by_name (zoo_name)
+        # binding.pry
+        self.all.each do |zoo_instance|
+            # binding.pry
+            if zoo_instance.name == zoo_name
+                return zoo_instance
+            end
+        end
+    end
 end

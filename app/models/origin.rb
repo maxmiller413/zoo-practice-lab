@@ -26,28 +26,49 @@ class Origin
     end 
 
 # - `Origin#animals` should return all the animals that a specific instance of an origin has.
+
     def animals
-        # binding.pry
+        #binding.pry
         Animal.all.select do |animal|
             animal.origin == self
+        #binding.pry 
         end
     end 
 
     def animal_number
-        animals.size
+        animals.length
     end
 
+# - `Origin.find_by_continent` should take in a string of a continent as an argument and return an array of all the countries within that continent.
+
     def self.find_by_continent(variable_continent)
-        # binding.pry
+        # #binding.pry
         new_arr = []
         self.all.select do |instance_continent|
-            # binding.pry
+            binding.pry
             if instance_continent.continent == variable_continent
                 new_arr << instance_continent.country
             end
         end
         new_arr
-        
+        # all.each{|x| x.animals.map {|animal| binding.pry animal.continent == variable_continent}}
+    
     end
+
+    # - `Origin.most_animals` should return an instance of an origin that in general has the most animals.
+
+
+    def self.most_animals
+        #binding.pry
+        most_origin = all[0]
+        #binding.pry
+        all.each do |origin|
+            if origin.animal_number > most_origin.animal_number 
+                most_origin = origin 
+                #binding.pry
+            end 
+        end 
+        most_origin
+    end 
 end
 

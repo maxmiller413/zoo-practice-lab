@@ -22,4 +22,11 @@ class Animal
     def self.all
         @@all
     end 
+
+    # HELPER -- `Origin.most_animals` should return an instance of an origin that in general has the most animals.
+    # def self.animal_origin
+    #     Animal.all.map do |animal|
+    #         animal.origin
+    #     end
+    # end
 end
